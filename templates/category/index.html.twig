@@ -30,6 +30,8 @@
         {% endfor %}
         </tbody>
     </table>
-
+    <div>
+        {{ knp_pagination_render(categories) }}
+    </div>
     <a class="btn btn-primary" href="{{ path('category_new') }}">Create new</a>
 {% endblock %}
