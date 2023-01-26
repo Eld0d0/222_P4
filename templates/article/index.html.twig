@@ -38,5 +38,9 @@
     </tbody>
 </table>
 
+<div>
+    {{ knp_pagination_render(articles) }}
+</div>
+
 <a class="btn btn-primary" href="{{ path('article_new') }}">Create new</a>
 {% endblock %}
