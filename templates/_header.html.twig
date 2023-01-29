@@ -1,11 +1,11 @@
 
 <header class="d-flex justify-content-center">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <a class="navbar-brand d-flex align-items-center" href="/">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+        <a class="navbar-brand" href="/">
             <img class="navbar-logo" src="{{ asset('img/Ada_Lovelace.webp') }}" alt="Logo">
             Ada Lovelace
         </a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse text-uppercase" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 {# La page d'accueil redirige automatiquement vers la page des articles
                 Le lien est là juste pour faire bonne figure #}
@@ -33,4 +33,23 @@
             </ul>
         </div>
     </nav>
+
+    <div class="view head-img" style="background-image:url('{{asset('img/ada-wall.jpg')}}')">
+        <div class="">
+            <div class="flex-center">
+                <div class="container text-center">
+                    {% if currentPath in '/blog' %}
+                        <h1>UE L222 - Ada Lovelace</h1>
+                        <p>Semaine 4</p>
+                    {% endif %}
+                    {% if currentPath in '/article_index' %}
+                        <h1>Nos articles</h1>
+                    {% endif %}
+                    {% if currentPath in '/category_index' %}
+                        <h1>Nos catégories</h1>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
