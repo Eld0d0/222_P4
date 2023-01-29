@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Article{% endblock %}
+{% block title %}Modifier l'article - Ada Lovelace{% endblock %}
 
 {% block body %}
-    <h1>Edit Article</h1>
 
-    {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="container mx-auto w-50 my-5">
+        <h1>Modifier cet article</h1>
 
-    <a class="btn btn-primary" href="{{ path('article_index') }}">back to list</a>
+        {{ include('article/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    {{ include('article/_delete_form.html.twig') }}
+        <div class="d-flex mb-5 w-50 mx-auto btn-zone btn-right">
+            <a class="btn btn-primary" href="{{ path('article_index') }}">Retour aux articles</a>
+            {{ include('article/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

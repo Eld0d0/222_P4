@@ -25,7 +25,6 @@ class ArticleController extends AbstractController
             $request->query->getInt('page', 1),
             1
         );
-
         return $this->render('article/index.html.twig', [
             'articles' => $articles,
         ]);

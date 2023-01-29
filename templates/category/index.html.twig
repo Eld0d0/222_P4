@@ -1,37 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Catégories d'articles - Ada Lovelace{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
 
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <div>
-        {{ knp_pagination_render(categories) }}
+<div class="container mt-5">
+    <h1 class="pb-5 text-center">Catégories d'articles</h1>
+    <div class="row">
+        <div class="col">
+            <!-- Hover added -->
+            <div class="list-group">
+                {% for category in categories %}
+                <li class="dropdown list-group-item list-group-item-action">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="{{ path('article_index') }}" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{category.name}}
+                    </a>
+                    <div class="dropdown-menu category-dropdown" aria-labelledby="navbarDropdownMenuLink">
+                        <h6 class="dropdown-header">Articles de la catégorie "{{ category.name }}"</h6>
+                        {% if category.Articles is defined %}
+                            {% for article in category.Articles %}
+                                <a class="dropdown-item list-group-item list-group-item-action" href="{{ path('article_show', {'id': article.id}) }}"> {{ article.title }} </a>
+                            {% endfor %}
+                        {% endif %} 
+                        <h6 class="dropdown-header">Actions</h6>
+                        <a class="dropdown-item list-group-item list-group-item-action" href="{{ path('category_show', {'id': category.id}) }}"><i class="fa-solid fa-eye"></i> Voir cette catégorie</a>
+                        <a class="dropdown-item list-group-item list-group-item-action" href="{{ path('category_edit', {'id': category.id}) }}"><i class="fa-solid fa-pen-to-square"></i> Modifier cette catégorie</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </div>
+            <div class="d-flex my-5 w-50">
+                <a class="btn btn-primary" href="{{ path('category_new') }}">Créer une nouvelle catégorie <i class="fa-solid fa-plus"></i></a>
+            </div>
+        </div>
     </div>
-    <a class="btn btn-primary" href="{{ path('category_new') }}">Create new</a>
+</div>
+    
 {% endblock %}

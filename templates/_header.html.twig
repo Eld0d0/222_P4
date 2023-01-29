@@ -1,58 +1,36 @@
-<header class="d-flex justify-content-center py-3">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<header class="d-flex justify-content-center">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <img class="navbar-logo" src="{{ asset('img/Ada_Lovelace.webp') }}" alt="Logo">
+            Ada Lovelace
+        </a>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 {# La page d'accueil redirige automatiquement vers la page des articles
                 Le lien est là juste pour faire bonne figure #}
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Accueil</a>
+                    {% if currentPath in '/blog' %}
+                        <a class="nav-link active" href="/">Accueil</a>
+                    {% else %}
+                        <a class="nav-link" href="/">Accueil</a>
+                    {% endif %}
                 </li>
-
-                {# Si on est sur la page articles on aura les données renvoyé par le
-                contrôleur permettant d'afficher la liste des articles en dropdown #}
-                {% if articles is defined %}
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="/article" id="navbarDropdownMenuLink" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Articles
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        {% for article in articles %}
-                        <a class="dropdown-item" href="/article/{{ article.id }}">{{ article.title }}</a>
-                        {% endfor %}
-                    </div>
-                </li>
-                {# Sinon on affiche juste un lien pour la page des articles #}
-                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="/article">
-                        Articles
-                    </a>
+                    {% if currentPath in '/article_index' %}
+                        <a class="nav-link active" href="{{ path('article_index') }}">Articles</a>
+                    {% else %}
+                        <a class="nav-link" href="{{ path('article_index') }}">Articles</a>
+                    {% endif %}
                 </li>
-                {% endif %}
-
-                {# On fait la même chose pour la page des catégories #}
-                {% if categories is defined %}
-                <li class="nav-item dropdown active"></li>
-                <a class="nav-link dropdown-toggle" href="/category" id="navbarDropdownMenuLink" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Catégories
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    {% for category in categories %}
-                    <a class="dropdown-item" href="/article/{{ category.id }}">{{ category.name }}</a>
-                    {% endfor %}
-                </div>
-                </li>
-                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="/category">
-                        Catégories
-                    </a>
+                {% if currentPath in '/category_index' %}
+                        <a class="nav-link active" href="{{ path('category_index') }}">Catégories</a>
+                    {% else %}
+                        <a class="nav-link" href="{{ path('category_index') }}">Catégories</a>
+                    {% endif %}
                 </li>
-                {% endif %}
             </ul>
-
         </div>
     </nav>
 </header>

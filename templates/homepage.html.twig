@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Accueil - Ada Lovelace{% endblock %}
+{% block body %}
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{ asset('img/ada-lovelace-hero.jpeg') }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Ada Lovelace</h1>
+            <p class="lead">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel ex non ligula volutpat tincidunt at a nulla. Integer posuere dictum mi in interdum. Cras dictum sit amet massa condimentum placerat. Quisque pellentesque maximus sapien id tincidunt. Nulla facilisi. Nullam facilisis risus non ante tincidunt dictum. Mauris rhoncus lectus eu mattis sodales. Morbi purus nunc, gravida fringilla condimentum vitae, pharetra sed mi. Praesent sem arcu, lobortis ac tellus a, accumsan faucibus nibh. Phasellus eget congue dolor. Quisque sed ullamcorper sem, a porta lacus. Mauris sit amet ornare felis. Ut maximus odio enim, sed vestibulum mauris aliquam in. 
+            </p>
+            <a href="{{ path('article_index') }}" class="btn btn-primary btn-lg">Accéder aux articles<i class="fa-solid fa-chevron-right chevron-hero"></i></i></a>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}
