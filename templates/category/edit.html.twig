@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Category{% endblock %}
+{% block title %}Modifier la catégorie - Ada Lovelace{% endblock %}
 
 {% block body %}
-    <h1>Edit Category</h1>
 
-    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="container mx-auto w-50 my-5">
+        <h1>Modifier cette catégorie</h1>
 
-    <a class="btn btn-primary" href="{{ path('category_index') }}">back to list</a>
+        {{ include('category/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    {{ include('category/_delete_form.html.twig') }}
+        <div class="d-flex mb-5 w-50 mx-auto btn-zone btn-right">
+            <a class="btn btn-primary" href="{{ path('category_index') }}">Retour aux catégories</a>
+            {{ include('category/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

@@ -1,46 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article index{% endblock %}
+{% block title %}Liste des articles - Ada Lovelace{% endblock %}
 {% block body %}
-<h1>Article index</h1>
-
-<table class="table table-striped">
-    <thead class="thead-dark">
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Content</th>
-            <th>actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for article in articles %}
-        <tr>
-            <td>{{ article.id }}</td>
-            <td>{{ article.title }}</td>
-            <td>
-                {% if article.Category.name is defined %}
-                {{ article.Category.name }}
-                {% endif %}
-            </td>
-            <td>{{ article.content }}</td>
-            <td>
-                <a class="btn btn-primary" href="{{ path('article_show', {'id': article.id}) }}">show</a>
-                <a class="btn btn-primary" href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="4">no records found</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container mt-5">
+    <h1 class="pb-5 text-center">Articles à propos d'Ada Lovelace</h1>
+    <div class="row">
+        <div class="col">
+            <!-- Post content-->
+            {% for article in articles %}
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h2>{{ article.title }}</h2>
+                    <!-- Post categories-->
+                    {% if article.Category.name is defined %}
+                        <a class="badge category" href="{{path('category_show', {'id': article.Category.id}) }}">{{ article.Category.name }}</a>
+                    {% else %}
+                        <div class="badge uncategorized" href="#!">Non catégorisé</div>
+                    {% endif %}
+                </header>
+                <!-- Preview image figure-->
+                <figure class="d-flex flex-column justify-content-center"><img class="img-fluid rounded" src="https://picsum.photos/900/400" alt="..."></figure>
+                <!-- Post content-->
+                <section class="mb-2">
+                    <p>{{ article.content }}</p>
+                </section>
+                <div class="d-flex mb-5 w-50 mx-auto btn-zone">
+                    <a class="btn btn-primary" href="{{ path('article_show', {'id': article.id}) }}">Voir cet article <i class="fa-solid fa-eye"></i></a>
+                    <a class="btn btn-primary" href="{{ path('article_new') }}">Écrire un nouvel article <i class="fa-solid fa-plus"></i></a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 <div>
     {{ knp_pagination_render(articles) }}
 </div>
 
-<a class="btn btn-primary" href="{{ path('article_new') }}">Create new</a>
 {% endblock %}
