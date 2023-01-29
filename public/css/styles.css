@@ -1,3 +1,33 @@
+html,
+body,
+header,
+.view {
+    height: 100%;
+}
+
+.head-img h1 {
+    margin-top: 300px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 100px;
+    text-shadow: 2px 2px 5px #2c2c2c;
+}
+
+.head-img p {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 30px;
+    text-shadow: 2px 2px 5px #2c2c2c;
+}
+
+.navbar {
+    background: rgba(0, 0, 0, 0.379);
+}
+
+.navbar li{
+    font-weight: bold;
+}
+
 .navbar-logo {
     width: 10%;
 }
@@ -61,4 +91,9 @@
 .category {
     background-color: #007bff;
     color: #fff;
+}
+
+.head-img {
+    background-size: cover;
+    width: 100%;
 }
